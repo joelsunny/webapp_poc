@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Config Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+            th, td, p, input {
+                font:14px Verdana;
+            }
+            table, th, td 
+            {
+                border: solid 1px #DDD;
+                border-collapse: collapse;
+                padding: 2px 3px;
+                text-align: center;
+            }
+            th {
+                font-weight:bold;
+            }
+        </style>
+</head>
+
+<body>
+    <h1 class="heading">config manager</h1>
+    <input class="cmd_input" placeholder="type command to run">
+    <button class="convert-button">Run Command</button>
+    <br>
+    <input type="button" onclick="CreateTableFromJSON()" value="Monitor progress" />
+    <p id="showData"></p>
+    <br>
+    <input type="button" onclick="CreateTableFromJSON_()" value="View logs" />
+    <p id="showLog"></p>
+    <script src='script.js'></script>
+</body>
+</html>
