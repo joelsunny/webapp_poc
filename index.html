@@ -3,7 +3,7 @@
 
 <head>
     <title> Config Manager</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
             th, td, p, input {
                 font:14px Verdana;
@@ -23,14 +23,21 @@
 
 <body>
     <h1 class="heading">config manager</h1>
-    <input class="cmd_input" placeholder="type command to run">
-    <button class="convert-button">Run Command</button>
-    <br>
-    <input type="button" onclick="CreateTableFromJSON()" value="Monitor progress" />
-    <p id="showData"></p>
-    <br>
-    <input type="button" onclick="CreateTableFromJSON_()" value="View logs" />
-    <p id="showLog"></p>
+    <div class="box1">
+        <input class="Cmd-input" placeholder="type command to run">
+        <button type="button" class="run-button">Run Command</button>
+        <div class="box4">
+            <p class="msg" id="feedback">Job Submitted</p>
+        </div>
+    </div>
+    <div class="box2">
+        <input type="button" class="btn" onclick="CreateTableFromJSON()" value="Monitor progress" />
+        <p id="showData"></p>
+    </div>
+    <div class="box3">
+        <input type="button" class="btn" onclick="CreateTableFromJSON_()" value="View logs" />
+        <p id="showLog"></p>
+    </div>
     <script src='script.js'></script>
 </body>
 </html>

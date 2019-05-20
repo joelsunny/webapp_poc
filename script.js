@@ -1,10 +1,21 @@
-var convertBtn = document.querySelector('.convert-button');
-var Cmdinput = document.querySelector('.cmd_input');
+var convertBtn = document.querySelector('.run-button');
+var Cmdinput = document.querySelector('.Cmd-input');
 
 convertBtn.addEventListener('click', () => {
     console.log(`CMD: ${Cmdinput.value}`);
     runCmd(Cmdinput.value);
 });
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function changeVisibility() {
+    var feedback = document.getElementById('feedback')
+    feedback.style.visibility = 'visible'
+    await sleep(2000);
+    feedback.style.visibility = 'hidden'
+}
 
 function runCmd(cmd) {
 
@@ -22,6 +33,7 @@ function runCmd(cmd) {
       method: 'post',
       body: JSON.stringify(payload)
     })
+    changeVisibility();
 }
 
 function CreateTableFromJSON() {
