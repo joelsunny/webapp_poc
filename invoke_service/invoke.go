@@ -50,8 +50,8 @@ func Invoke(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	//var s Status
-	//go SignalFuncStart(&s)
+	var s Status
+	go SignalFuncStart(&s)
 	time.Sleep(5 * time.Second)
 	fmt.Println(t.Cmd)
 	cmd_parts := strings.Fields(t.Cmd)
@@ -59,9 +59,8 @@ func Invoke(w http.ResponseWriter, r *http.Request) {
 	cmd_options := cmd_parts[1:len(cmd_parts)]
 	fmt.Println(cmd_options)
 	out, err := exec.Command(cmd_binary, cmd_options...).Output()
-	fmt.Println(string(out))
-	//LogOutput(string(out), s.Pid)
-	//go SignalFuncEnd(&s)
+	LogOutput(string(out), s.Pid)
+	go SignalFuncEnd(&s)
 }
 
 // LogOutput - send execution log to logging service
