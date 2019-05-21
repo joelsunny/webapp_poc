@@ -9,10 +9,10 @@ import (
 	"os/exec"
 	"strconv"
 	"strings"
+
+	//	"strings"
 	"time"
 )
-
-// NOTE: develop an API first instead of focusing on UI
 
 type Payload struct {
 	Cmd    string
@@ -58,8 +58,11 @@ func Invoke(w http.ResponseWriter, r *http.Request) {
 	cmd_binary := cmd_parts[0]
 	cmd_options := cmd_parts[1:len(cmd_parts)]
 	out, err := exec.Command(cmd_binary, cmd_options...).Output()
+	//out, err := exec.Command(t.Cmd).Output()
 	LogOutput(string(out), s.Pid)
 	go SignalFuncEnd(&s)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	fmt.Fprintf(w, "INFO: Completed")
 }
 
 // LogOutput - send execution log to logging service

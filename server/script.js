@@ -29,16 +29,16 @@ function runCmd(cmd) {
         console.log('WARNING: empty command');
     }
 
-    fetch('http://invoke:8080/invoke', {
+    fetch('http://localhost/invoke', {
       method: 'post',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     })
     changeVisibility();
 }
 
 function CreateTableFromJSON() {
     let jsondata;    
-    fetch('http://monitor:8081/monitor/get').then(function(u){ return u.json();})
+    fetch('http://localhost/monitor/get').then(function(u){ return u.json();})
     .then(function(json){
             jsondata = json;
             console.log(jsondata)
@@ -91,7 +91,7 @@ function CreateTableFromJSON() {
 
 function CreateTableFromJSON_() {
     let jsondata;    
-    fetch('http://logging:8082/log/get').then(function(u){ return u.json();})
+    fetch('http://localhost/log/get').then(function(u){ return u.json();})
     .then(function(json){
             jsondata = json;
             console.log(jsondata)
