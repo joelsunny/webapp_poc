@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -49,13 +50,18 @@ func Invoke(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	var s Status
-	go SignalFuncStart(&s)
+	//var s Status
+	//go SignalFuncStart(&s)
 	time.Sleep(5 * time.Second)
 	fmt.Println(t.Cmd)
-	out, err := exec.Command(t.Cmd).Output()
-	LogOutput(string(out), s.Pid)
-	go SignalFuncEnd(&s)
+	cmd_parts := strings.Fields(t.Cmd)
+	cmd_binary := cmd_parts[0]
+	cmd_options := cmd_parts[1:len(cmd_parts)]
+	fmt.Println(cmd_options)
+	out, err := exec.Command(cmd_binary, cmd_options...).Output()
+	fmt.Println(string(out))
+	//LogOutput(string(out), s.Pid)
+	//go SignalFuncEnd(&s)
 }
 
 // LogOutput - send execution log to logging service
