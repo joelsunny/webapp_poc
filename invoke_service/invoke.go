@@ -57,7 +57,6 @@ func Invoke(w http.ResponseWriter, r *http.Request) {
 	cmd_parts := strings.Fields(t.Cmd)
 	cmd_binary := cmd_parts[0]
 	cmd_options := cmd_parts[1:len(cmd_parts)]
-	fmt.Println(cmd_options)
 	out, err := exec.Command(cmd_binary, cmd_options...).Output()
 	LogOutput(string(out), s.Pid)
 	go SignalFuncEnd(&s)
