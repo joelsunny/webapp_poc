@@ -1,0 +1,20 @@
+version: '3'
+services:
+  server:
+    build: ./server
+    ports:
+     - "80:80"
+  invoke:
+          build: ./invoke_service
+          ports: 
+           - "8080:8080"
+
+  monitor:
+          build: ./monitor_service
+          ports:
+           - "8081:8081"
+
+  logging:
+          build: ./logging_service
+          ports:
+           - "8082:8082"

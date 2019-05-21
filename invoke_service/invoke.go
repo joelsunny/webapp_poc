@@ -68,7 +68,7 @@ func LogOutput(out string, pid string) {
 	if err != nil {
 		panic(err)
 	}
-	req, err := http.NewRequest("POST", "http://localhost:8082/log", bytes.NewBuffer(logJSON))
+	req, err := http.NewRequest("POST", "http://logging:8082/log", bytes.NewBuffer(logJSON))
 	if err != nil {
 		panic(err)
 	}
@@ -90,7 +90,7 @@ func SignalFuncStat(s *Status) {
 	if err != nil {
 		panic(err)
 	}
-	req, err := http.NewRequest("POST", "http://localhost:8081/monitor", bytes.NewBuffer(statusJSON))
+	req, err := http.NewRequest("POST", "http://monitor:8081/monitor", bytes.NewBuffer(statusJSON))
 	if err != nil {
 		panic(err)
 	}

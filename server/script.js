@@ -29,7 +29,7 @@ function runCmd(cmd) {
         console.log('WARNING: empty command');
     }
 
-    fetch('http://192.168.0.106:8080/invoke', {
+    fetch('http://invoke:8080/invoke', {
       method: 'post',
       body: JSON.stringify(payload)
     })
@@ -38,7 +38,7 @@ function runCmd(cmd) {
 
 function CreateTableFromJSON() {
     let jsondata;    
-    fetch('http://192.168.0.106:8081/monitor/get').then(function(u){ return u.json();})
+    fetch('http://monitor:8081/monitor/get').then(function(u){ return u.json();})
     .then(function(json){
             jsondata = json;
             console.log(jsondata)
@@ -91,7 +91,7 @@ function CreateTableFromJSON() {
 
 function CreateTableFromJSON_() {
     let jsondata;    
-    fetch('http://192.168.0.106:8082/log/get').then(function(u){ return u.json();})
+    fetch('http://logging:8082/log/get').then(function(u){ return u.json();})
     .then(function(json){
             jsondata = json;
             console.log(jsondata)
