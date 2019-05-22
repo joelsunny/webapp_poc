@@ -1,5 +1,7 @@
 var convertBtn = document.querySelector('.run-button');
 var Cmdinput = document.querySelector('.Cmd-input');
+var ReverseProxy = "localhost"
+var baseURL = "http://" + ReverseProxy + "/"
 
 convertBtn.addEventListener('click', () => {
     console.log(`CMD: ${Cmdinput.value}`);
@@ -22,14 +24,15 @@ function runCmd(cmd) {
     if (cmd) {
         payload = {
             cmd: cmd,
-            target: 'localhost'
+            target: 'vm',
+            reverseProxy : 'localhost'
         }
         console.log('INFO: created payload');
     } else {
         console.log('WARNING: empty command');
     }
 
-    fetch('http://localhost/invoke', {
+    fetch( baseURL + 'invoke', {
       method: 'post',
       body: JSON.stringify(payload),
     })
@@ -38,7 +41,7 @@ function runCmd(cmd) {
 
 function CreateTableFromJSON() {
     let jsondata;    
-    fetch('http://localhost/monitor/get').then(function(u){ return u.json();})
+    fetch( baseURL + 'monitor/get').then(function(u){ return u.json();})
     .then(function(json){
             jsondata = json;
             console.log(jsondata)
@@ -91,7 +94,7 @@ function CreateTableFromJSON() {
 
 function CreateTableFromJSON_() {
     let jsondata;    
-    fetch('http://localhost/log/get').then(function(u){ return u.json();})
+    fetch( baseURL + 'log/get').then(function(u){ return u.json();})
     .then(function(json){
             jsondata = json;
             console.log(jsondata)

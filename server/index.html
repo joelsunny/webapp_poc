@@ -5,6 +5,103 @@
     <title> Config Manager</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+            * {
+
+            }
+
+            .heading {
+                text-align: center;
+                font-family: monospace;
+            }
+
+            .Cmd-input, .run-button {
+                font-size:1.3em;
+                padding:5px 10px;
+            }
+
+            .Cmd-input {
+                border-radius:4px 0px 0px 4px;
+                width:20em;
+                height: 1.1em;
+                text-align: left;
+                border:2px solid white;
+                background:whitesmoke;
+                outline:none;
+            }
+
+            .msg {
+                border-radius:4px 4px 4px 4px;
+                width:10em;
+                min-height: 1.5em;
+                text-align: center;
+                background:rgba(63, 207, 27, 0.411);
+                outline:none;
+                margin: 7px auto;
+                visibility: hidden;
+            }
+
+            .Cmd-input:focus {
+                border:2px solid #EEEEEE;
+            }
+
+            .run-button {
+                border-radius:0px 4px 4px 0px;
+                border:2px solid #d49598;
+                background: #d49598;
+                color:white;
+            }
+
+            .run-button:hover {
+                border:2px solid #f32a2a;
+                background: #f32a2a;
+            }
+
+            .run-button:active {
+                padding: 6px 10px;
+            }
+
+            .box1 {
+                text-align: center;
+                width:60em;
+                min-height: 5em;
+                padding:5px 10px;
+                margin: 8px auto;
+            }
+
+            .btn {
+                border-radius:2px 2px 2px 2px;
+                border:2px solid #d49598;
+                background: #d49598;
+                color:white;
+            }
+
+            .btn:hover {
+                border:2px solid #f32a2a;
+                background: #f32a2a;
+            }
+
+            .box2 {
+                width:60em;
+                border-radius:4px 0px 0px 4px;
+                border:2px solid #EEEEEE;
+                min-height: 8em;
+                padding:5px 10px;
+                margin: 8px auto;
+            }
+
+            .box3 {
+                width:60em;
+                border-radius:4px 0px 0px 4px;
+                border:2px solid #EEEEEE;
+                min-height: 10em;
+                padding:5px 10px;
+                margin: 8px auto;
+            }
+
+            .boxx:hover {
+                border:2px solid #0485ff;
+            }
+            
             th, td, p, input {
                 font:14px Verdana;
             }
