@@ -5,10 +5,14 @@ services:
     ports:
      - "80:80"
   invoke:
-          build: ./invoke_service
+          build: ./discovery_service
 
   monitor:
           build: ./monitor_service
 
   logging:
           build: ./logging_service
+  
+  agent:
+          build: ./agent/
+

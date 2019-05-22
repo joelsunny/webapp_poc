@@ -9,5 +9,5 @@ RUN apk update && \
    rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=build-env /app/goapp /app
-EXPOSE 8080
+EXPOSE 5001
 ENTRYPOINT ./goapp
