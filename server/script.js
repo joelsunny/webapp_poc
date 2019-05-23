@@ -136,7 +136,7 @@ function CreateTableFromJSON_() {
                 for (var j = 0; j < col.length; j++) {
                     var tabCell = tr.insertCell(-1);
                     // display newline character literally
-                    tabCell.innerHTML = "<pre> <div style='max-width: 800px; max-height: 300px ;overflow: auto'>" + myBooks[i][col[j]] + "</div></pre>";
+                    tabCell.innerHTML = "<pre style='background:none'> <div style='background: none; max-width: 800px; max-height: 300px ;overflow: auto'>" + myBooks[i][col[j]] + "</div></pre>";
                 }
             }
 
