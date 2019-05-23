@@ -1,7 +1,8 @@
 var convertBtn = document.querySelector('.run-button');
 var Cmdinput = document.querySelector('.Cmd-input');
-var ReverseProxy = "localhost"
-var baseURL = "http://" + ReverseProxy + "/"
+var ReverseProxy = "192.168.0.106";
+var baseURL = "http://" + ReverseProxy + "/";
+console.log(baseURL);
 
 convertBtn.addEventListener('click', () => {
     console.log(`CMD: ${Cmdinput.value}`);
@@ -25,13 +26,14 @@ function runCmd(cmd) {
         payload = {
             cmd: cmd,
             target: 'vm',
-            reverseProxy : 'localhost'
+            reverseProxy : ReverseProxy
         }
         console.log('INFO: created payload');
     } else {
         console.log('WARNING: empty command');
     }
 
+    console.log(payload['reverseProxy']);
     fetch( baseURL + 'invoke', {
       method: 'post',
       body: JSON.stringify(payload),
@@ -80,7 +82,7 @@ function CreateTableFromJSON() {
 
                 for (var j = 0; j < col.length; j++) {
                     var tabCell = tr.insertCell(-1);
-                    tabCell.innerHTML = myBooks[i][col[j]];
+                    tabCell.innerHTML = myBooks[i][col[j]] ;
                 }
             }
 
@@ -133,7 +135,8 @@ function CreateTableFromJSON_() {
 
                 for (var j = 0; j < col.length; j++) {
                     var tabCell = tr.insertCell(-1);
-                    tabCell.innerHTML = myBooks[i][col[j]];
+                    // display newline character literally
+                    tabCell.innerHTML = "<pre class='tdata'>" + myBooks[i][col[j]] + "</pre>";
                 }
             }
 

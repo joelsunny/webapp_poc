@@ -15,4 +15,6 @@ services:
   
   agent:
           build: ./agent/
+          ports:
+           - "5001:5001"
 

@@ -9,5 +9,6 @@ RUN apk update && \
    rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=build-env /app/goapp /app
+COPY targets.json /app/
 EXPOSE 8080
 ENTRYPOINT ./goapp

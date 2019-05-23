@@ -10,9 +10,9 @@ import (
 
 // Payload type definition
 type Payload struct {
-	Cmd          string
-	Target       string
-	ReverseProxy string
+	Cmd          string `json: cmd`
+	Target       string `json: target`
+	ReverseProxy string `json: reverseProxy`
 }
 
 // Target type definition
@@ -53,11 +53,13 @@ func runCmd(t *Payload) {
 	fmt.Println(url)
 	payloadJSON, err := json.Marshal(t)
 	if err != nil {
+		fmt.Println("ERROR:failed to parse payload json")
 		panic(err)
 	}
 
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(payloadJSON))
 	if err != nil {
+		fmt.Println("ERROR:failed to create request")
 		panic(err)
 	}
 	req.Header.Set("Content-Type", "application/json")
@@ -65,6 +67,7 @@ func runCmd(t *Payload) {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
+		fmt.Println("ERROR:request failed")
 		panic(err)
 	}
 	resp.Body.Close()
@@ -79,6 +82,7 @@ func discoverTarget(target string) string {
 		panic(err)
 	}
 	ip := s.IP
+	fmt.Print("INFO: target is ")
 	fmt.Println(ip)
 	return (ip)
 

@@ -14,9 +14,9 @@ import (
 
 // Payload type definition
 type Payload struct {
-	Cmd          string
-	Target       string
-	ReverseProxy string
+	Cmd          string `json: cmd`
+	Target       string `json: target`
+	ReverseProxy string `json: reverseProxy`
 }
 
 // Log type definition
@@ -78,6 +78,7 @@ func LogOutput(out string, pid string, p *Payload) {
 	}
 
 	url := "http://" + p.ReverseProxy + "/log"
+	//url := "http://" + "192.168.0.106" + "/log"
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(logJSON))
 	if err != nil {
 		panic(err)
@@ -102,6 +103,7 @@ func SignalFuncStat(s *Status, p *Payload) {
 	}
 
 	url := "http://" + p.ReverseProxy + "/monitor"
+	//url := "http://" + "192.168.0.106" + "/monitor"
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(statusJSON))
 	if err != nil {
 		panic(err)
