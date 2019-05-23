@@ -1,6 +1,6 @@
 var convertBtn = document.querySelector('.run-button');
 var Cmdinput = document.querySelector('.Cmd-input');
-var ReverseProxy = "192.168.0.106";
+var ReverseProxy = "35.200.185.240";
 var baseURL = "http://" + ReverseProxy + "/";
 console.log(baseURL);
 
@@ -136,7 +136,7 @@ function CreateTableFromJSON_() {
                 for (var j = 0; j < col.length; j++) {
                     var tabCell = tr.insertCell(-1);
                     // display newline character literally
-                    tabCell.innerHTML = "<pre class='tdata'>" + myBooks[i][col[j]] + "</pre>";
+                    tabCell.innerHTML = "<pre> <div style='max-width: 800px; max-height: 300px ;overflow: auto'>" + myBooks[i][col[j]] + "</div></pre>";
                 }
             }
 
@@ -147,3 +147,4 @@ function CreateTableFromJSON_() {
         }
     )
 }
+

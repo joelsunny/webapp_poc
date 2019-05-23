@@ -13,8 +13,4 @@ services:
   logging:
           build: ./logging_service
   
-  agent:
-          build: ./agent/
-          ports:
-           - "5001:5001"
 

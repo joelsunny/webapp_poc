@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
             * {
-                background:rgb(228, 236, 240);
+                background:whitesmoke;
             }
 
             .heading {
@@ -15,7 +15,7 @@
             }
 
             .Cmd-input, .run-button {
-                font-size:1.3em;
+                font-size:1.1em;
                 padding:5px 10px;
             }
 
@@ -71,61 +71,62 @@
 
             .btn {
                 width : 10em;
-                border-radius:2px 2px 2px 2px;
+                border-radius:4px 4px 4px 4px;
                 border:1px solid rgb(182, 182, 182);
-                background: red;
-                color: white;
+                background: white;
+                color:  black;
             }
 
             .btn:hover {
                 border:1px solid red;
-                background: rgb(194, 1, 1);
+                background: red;
                 color: white;
             }
 
             .box2 {
                 width:60em;
-                border-radius:4px 0px 0px 4px;
-                border:2px solid #EEEEEE;
                 min-height: 8em;
+                border: none;
                 padding:5px 10px;
                 margin: 8px auto;
-                background:white;
-                border:1px solid rgb(182, 182, 182);
+                background: #ebe9e9;
+                border-left:3px solid rgb(231, 9, 9);
+                border-radius:4px 4px 4px 4px;
+                outline: none;
             }
 
             .box3 {
                 width:60em;
-                border-radius:4px 0px 0px 4px;
-                border:2px solid #EEEEEE;
                 min-height: 10em;
+                border: none;
                 padding:5px 10px;
                 margin: 8px auto;
-                background:white;
-                border:1px solid rgb(182, 182, 182);
+                background:#ebe9e9;
+                border-left:3px solid rgb(231, 9, 9);
+                border-radius:4px 4px 4px 4px;
+                outline: none;
             }
 
             .boxx:hover {
                 border:2px solid #0485ff;
             }
-            tdata {
-                background: white;
-            }
-            th, td, p, input {
-                font:14px Verdana;
-                background: white;
-            
 
-            table, th, td 
-            {
+            th, td {
+                font:14px monospace;
+                background: none;
+            }
+
+            table, th, td {
                 border: solid 1px #DDD;
                 border-collapse: collapse;
                 padding: 2px 3px;
-                text-align: center;
                 background: white;
             }
             th {
                 font-weight:bold;
+            }
+            .data {
+                background:none;
             }
         </style>
 </head>
@@ -141,11 +142,12 @@
     </div>
     <div class="box2">
         <input type="button" class="btn" onclick="CreateTableFromJSON()" value="Monitor progress" />
-        <p id="showData"></p>
+        <p id="showData" class="data"></p>
     </div>
+    <br>
     <div class="box3">
         <input type="button" class="btn" onclick="CreateTableFromJSON_()" value="View logs" />
-        <p id="showLog"></p>
+        <p id="showLog" class="data"></p>
     </div>
     <script src='script.js'></script>
 </body>
