@@ -8,6 +8,54 @@
             * {
                 background:rgb(228, 236, 240);
             }
+            .sidenav {
+                height: 100%;
+                width: 10%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color:rgb(201, 213, 219);
+                overflow-x: hidden;
+                padding-top: 20px;
+                font-family: monospace;
+                font-weight:bold;
+            }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 14px;
+                color: #818181;
+                display: block;
+                background: none;
+            }
+
+            .sidenav a:hover {
+                color: red
+            }
+
+            .sidenav a:link:active, a:visited:active {
+                background:none;
+            }
+            .content {
+                position: absolute;
+                margin-left:10%;
+            }
+            .main {
+                position: absolute;
+                margin-left: 10vh;
+                margin-right: auto;
+                /*margin-left: 160px; /* Same as the width of the sidenav */
+                padding: 0px 10px;
+            }
+
+            .home-view {
+            }
+
+            .ansible-view {
+                visibility: hidden;
+            }
 
             .heading {
                 text-align: center;
@@ -104,7 +152,17 @@
                 background:white;
                 border:1px solid rgb(182, 182, 182);
             }
-
+            .box5 {
+                width:60em;
+                border-radius:4px 0px 0px 4px;
+                border:2px solid #EEEEEE;
+                margin-top: 10em;
+                min-height: 20em;
+                padding:5px 10px;
+                margin: 8px auto;
+                background:white;
+                border:1px solid rgb(182, 182, 182);
+            }
             .boxx:hover {
                 border:2px solid #0485ff;
             }
@@ -131,21 +189,52 @@
 </head>
 
 <body>
-    <h1 class="heading">config manager</h1>
-    <div class="box1">
-        <input class="Cmd-input" placeholder="type command to run">
-        <button type="button" class="run-button">Run Command</button>
-        <div class="box4">
-            <p class="msg" id="feedback">Job Submitted</p>
+    <!-- Side navigation -->
+    <div class="sidenav">
+        <a id="home" style="background:rgb(228, 236, 240)" onclick="setView(this.id)">Home</a>
+        <a id="ansible" onclick="setView(this.id)">Ansible</a>
+    </div>
+
+    <!-- Home view -->
+    <div class="content">
+    <div class="home-view" id="home-context">
+        
+        <div class="main">
+                <h1 class="heading">config manager</h1>
+            <div class="box1">
+                <input class="Cmd-input" placeholder="type command to run">
+                <button type="button" class="run-button">Run Command</button>
+                <div class="box4">
+                    <p class="msg" id="feedback">Job Submitted</p>
+                </div>
+            </div>
+            <div class="box2">
+                <input type="button" class="btn" onclick="CreateTableFromJSON()" value="Monitor progress" />
+                <p id="showData"></p>
+            </div>
+            <div class="box3">
+                <input type="button" class="btn" onclick="CreateTableFromJSON_()" value="View logs" />
+                <p id="showLog"></p>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Home view end -->
+
+    <!-- Ansible view -->
+    <div class="ansible-view" id="ansible-context">
+        <div class="main">
+                <h1 class="heading">config manager</h1>
+            <div class="box5">
+                <input type="button" class="btn" onclick="CreateTableFromJSON()" value="View nodes" />
+                <p id="showData"></p>
+            </div>
+
         </div>
     </div>
-    <div class="box2">
-        <input type="button" class="btn" onclick="CreateTableFromJSON()" value="Monitor progress" />
-        <p id="showData"></p>
-    </div>
-    <div class="box3">
-        <input type="button" class="btn" onclick="CreateTableFromJSON_()" value="View logs" />
-        <p id="showLog"></p>
+    <!-- Ansible view end-->
+        
     </div>
     <script src='script.js'></script>
 </body>

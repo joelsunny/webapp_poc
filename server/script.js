@@ -2,12 +2,35 @@ var convertBtn = document.querySelector('.run-button');
 var Cmdinput = document.querySelector('.Cmd-input');
 var ReverseProxy = "192.168.0.106";
 var baseURL = "http://" + ReverseProxy + "/";
+var Router = {
+    "home" : "home-context",
+    "ansible": "ansible-context"
+}
+
 console.log(baseURL);
 
 convertBtn.addEventListener('click', () => {
     console.log(`CMD: ${Cmdinput.value}`);
     runCmd(Cmdinput.value);
 });
+
+function setView(id) {
+    let currView;
+    
+    for ( var route in Router) {
+        var menu = document.getElementById(route)
+        var ctx = document.getElementById(Router[route])
+        ctx.style.visibility = 'hidden'
+        menu.style.background = 'rgb(201, 213, 219)'
+        if (route == id) {
+            currView = ctx
+            menu.style.background = 'rgb(228, 236, 240)'
+        }
+        
+    }
+
+    currView.style.visibility = 'visible'
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
