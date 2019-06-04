@@ -4,6 +4,8 @@ services:
     build: ./server
     ports:
      - "80:80"
+    volumes:
+     - "/home/sunny/Documents/github.com/webapp_poc/server:/usr/share/nginx/html"
   invoke:
           build: ./discovery_service
 
