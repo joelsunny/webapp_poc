@@ -46,7 +46,7 @@ def run_playbook(cmd):
     results_callback = ResultCallback()
 
     # create inventory, use path to host config file as source or hosts in a comma separated string
-    inventory = InventoryManager(loader=loader, sources='localhost,')
+    inventory = InventoryManager(loader=loader, sources='/ansible/playbooks/hosts.ini')
 
     # variable manager takes care of merging all the different sources to give you a unified view of variables available in each context
     variable_manager = VariableManager(loader=loader, inventory=inventory)
@@ -54,7 +54,7 @@ def run_playbook(cmd):
     # create data structure that represents our play, including tasks, this is basically what our YAML loader does internally.
     play_source =  dict(
             name = "Ansible Play",
-            hosts = 'localhost',
+            hosts = ['manjo'],
             gather_facts = 'no',
             tasks = [
                 dict(action=dict(module='shell', args=cmd), register='shell_out'),
@@ -92,4 +92,4 @@ def run_playbook(cmd):
 
 if __name__ == '__main__':
     cmd = sys.argv[1]
-    run_playbook(cmd)``
+    run_playbook(cmd)
